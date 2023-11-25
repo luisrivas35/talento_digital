@@ -1,4 +1,10 @@
 pipeline {
+    environment {
+        DOCKERHUB_USERNAME = 'luisrivas35'
+        DOCKERHUB_PASSWORD = credentials('DockerHub_credentials')
+        DOCKERHUB_REPO = 'luisrivas35/exam-app'
+    }
+
     agent any
     
     stages {
@@ -36,17 +42,20 @@ pipeline {
             }
         }
 
-        // stage('Dockerize') {
-        //     steps {
-        //         script {
-        //             // Build Docker image (adjust image name and tag)
-        //             sh 'docker build -t your-image-name:latest .'
+        stage('Dockerize') {
+            steps {
+                script {
+                    // Build Docker image
+                    sh "docker build -t $DOCKERHUB_REPO:latest ."
                     
-        //             // Push Docker image to a registry if needed
-        //             // sh 'docker push your-registry/your-image-name:latest'
-        //         }
-        //     }
-        // }
+                    // Log in to Docker Hub
+                    sh "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
+                    
+                    // Push Docker image to Docker Hub
+                    sh "docker push $DOCKERHUB_REPO:latest"
+                }
+            }
+        }
     }
 
     post {
