@@ -23,25 +23,7 @@ pipeline {
                 }
             }
         }
-
-        // stage('Build and Test') {
-        //     steps {
-        //         script {
-        //             // Add your build/test commands if applicable
-        //             sh 'npm test'
-        //         }
-        //     }
-        // }
-
-        // stage('Start Application') {
-        //     steps {
-        //         script {
-        //             // Start Node.js application
-        //             sh 'npm start'
-        //         }
-        //     }
-        // }
-
+        
         stage('Dockerize') {
             steps {
                 script {

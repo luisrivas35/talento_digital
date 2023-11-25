@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: your-app-deployment
+spec:
+  replicas: 3  # Set the desired number of replicas based on your needs
+  selector:
+    matchLabels:
+      app: your-app
+  template:
+    metadata:
+      labels:
+        app: your-app
+    spec:
+      containers:
+      - name: your-app-container
+        image: luisrivas35/exam-app:latest  
+        ports:
+        - containerPort: 3000  
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: your-app-service
+spec:
+  selector:
+    app: your-app
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000  # Adjust based on the port your Node.js app is listening on
+  type: NodePort
