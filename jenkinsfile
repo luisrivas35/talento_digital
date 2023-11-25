@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     // Add your build/test commands if applicable
-                    // For example, sh 'npm test'
+                    sh 'npm test'
                 }
             }
         }
