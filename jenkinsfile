@@ -1,0 +1,57 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    checkout scm
+                }
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    sh 'npm install'
+                }
+            }
+        }
+
+        stage('Build and Test') {
+            steps {
+                script {
+                    // Add your build/test commands if applicable
+                    // For example, sh 'npm test'
+                }
+            }
+        }
+
+        stage('Start Application') {
+            steps {
+                script {
+                    // Start Node.js application
+                    sh 'npm start'
+                }
+            }
+        }
+
+        // stage('Dockerize') {
+        //     steps {
+        //         script {
+        //             // Build Docker image (adjust image name and tag)
+        //             sh 'docker build -t your-image-name:latest .'
+                    
+        //             // Push Docker image to a registry if needed
+        //             // sh 'docker push your-registry/your-image-name:latest'
+        //         }
+        //     }
+        // }
+    }
+
+    post {
+        always {
+            // cleanWs()  // Removed workspace cleanup
+        }
+    }
+}
