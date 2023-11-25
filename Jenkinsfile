@@ -58,9 +58,9 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            // cleanWs()  // Removed workspace cleanup
-        }
-    }
+    // post {
+    //     always {
+    //         // cleanWs()  // Removed workspace cleanup
+    //     }
+    // }
 }
