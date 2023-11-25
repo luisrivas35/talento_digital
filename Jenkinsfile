@@ -33,14 +33,14 @@ pipeline {
         //     }
         // }
 
-        stage('Start Application') {
-            steps {
-                script {
-                    // Start Node.js application
-                    sh 'npm start'
-                }
-            }
-        }
+        // stage('Start Application') {
+        //     steps {
+        //         script {
+        //             // Start Node.js application
+        //             sh 'npm start'
+        //         }
+        //     }
+        // }
 
         stage('Dockerize') {
             steps {
