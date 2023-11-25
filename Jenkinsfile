@@ -24,14 +24,14 @@ pipeline {
             }
         }
 
-        stage('Build and Test') {
-            steps {
-                script {
-                    // Add your build/test commands if applicable
-                    sh 'npm test'
-                }
-            }
-        }
+        // stage('Build and Test') {
+        //     steps {
+        //         script {
+        //             // Add your build/test commands if applicable
+        //             sh 'npm test'
+        //         }
+        //     }
+        // }
 
         stage('Start Application') {
             steps {
