@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: exam-app-deployment
 spec:
-  replicas: 3  # Set the desired number of replicas based on your needs
+  replicas: 3  
   selector:
     matchLabels:
       app: exam-app
@@ -30,5 +30,5 @@ spec:
   ports:
     - protocol: TCP
       port: 3000
-      targetPort: 3000  # Adjust based on the port your Node.js app is listening on
+      targetPort: 3000  # port Node.js app is listening on
   type: NodePort
